@@ -14,7 +14,7 @@
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license></license>
+  <license>TODO</license>
 
 
   <!-- Url tags are optional, but mutiple are allowed, one per tag -->
@@ -44,10 +44,10 @@
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>joy</build_depend>
   <build_depend>roscpp</build_depend>
-  <build_depend>std_msg</build_depend>
+  <build_depend>std_msgs</build_depend>
   <run_depend>joy</run_depend>
   <run_depend>roscpp</run_depend>
-  <run_depend>std_msg</run_depend>
+  <run_depend>std_msgs</run_depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

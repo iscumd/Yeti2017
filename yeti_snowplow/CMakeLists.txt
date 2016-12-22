@@ -7,7 +7,7 @@ project(yeti_snowplow)
 find_package(catkin REQUIRED COMPONENTS
   joy
   roscpp
-  std_msg
+  std_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -138,6 +138,9 @@ include_directories(
 # target_link_libraries(yeti_snowplow_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable(waypoint_selection src/waypoint_selection.cpp)
+target_link_libraries(waypoint_selection ${catkin_LIBRARIES})
 
 #############
 ## Install ##
