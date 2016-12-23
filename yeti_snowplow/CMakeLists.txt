@@ -8,6 +8,7 @@ find_package(catkin REQUIRED COMPONENTS
   joy
   roscpp
   std_msgs
+  message_generation
 )
 
 ## System dependencies are found with CMake's conventions
@@ -44,11 +45,10 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  joystick.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -65,10 +65,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  std_msgs  # Or other packages containing msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -102,7 +102,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES yeti_snowplow
-#  CATKIN_DEPENDS joy roscpp std_msg
+  CATKIN_DEPENDS joy roscpp std_msgs message_runtime
 #  DEPENDS system_lib
 )
 
@@ -138,6 +138,13 @@ include_directories(
 # target_link_libraries(yeti_snowplow_node
 #   ${catkin_LIBRARIES}
 # )
+
+# ADD NEW CPPs HERE
+add_executable(drive_mode_control src/drive_mode_control.cpp)
+target_link_libraries(drive_mode_control ${catkin_LIBRARIES})
+
+add_executable(joystick src/joystick.cpp)
+target_link_libraries(joystick ${catkin_LIBRARIES})
 
 add_executable(waypoint_selection src/waypoint_selection.cpp)
 target_link_libraries(waypoint_selection ${catkin_LIBRARIES})
