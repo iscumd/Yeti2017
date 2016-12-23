@@ -140,12 +140,14 @@ include_directories(
 # )
 
 # ADD NEW CPPs HERE
+add_executable(drive_mode_control src/drive_mode_control.cpp)
+target_link_libraries(drive_mode_control ${catkin_LIBRARIES})
+
 add_executable(joystick src/joystick.cpp)
 target_link_libraries(joystick ${catkin_LIBRARIES})
 
 add_executable(waypoint_selection src/waypoint_selection.cpp)
 target_link_libraries(waypoint_selection ${catkin_LIBRARIES})
-
 
 #############
 ## Install ##

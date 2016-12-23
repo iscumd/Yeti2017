@@ -24,10 +24,9 @@
 #define AXIS_DPAD_LR joy->axes[6]
 #define AXIS_DPAD_UD joy->axes[7]
 
-ros::Publisher joystick_pub;
+ros::Publisher joystickPub;
 
-void joystickCallback(const sensor_msgs::Joy::ConstPtr& joy)
-{	
+void joystickCallback(const sensor_msgs::Joy::ConstPtr& joy){	
 	/* This fires every time a button is pressed/released
 	and when an axis changes (even if it doesn't leave the
 	deadzone). */
@@ -38,7 +37,7 @@ void joystickCallback(const sensor_msgs::Joy::ConstPtr& joy)
 	msg.X = BUTTON_X;
 	msg.Y = BUTTON_Y;
 	// ROS_INFO("%s", strs.str().c_str());
-	joystick_pub.publish(msg);
+	joystickPub.publish(msg);
 }
 
 int main(int argc, char **argv){
@@ -46,7 +45,7 @@ int main(int argc, char **argv){
 
 	ros::NodeHandle n;
 
-	joystick_pub = n.advertise<yeti_snowplow::joystick>("joystick", 1000);
+	joystickPub = n.advertise<yeti_snowplow::joystick>("joystick", 1000);
 	ros::Subscriber sub = n.subscribe("joy", 1000, joystickCallback);
 
 	ros::spin();
