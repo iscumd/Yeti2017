@@ -1,4 +1,5 @@
 <launch>
 	<node name="joy_node" pkg="joy" type="joy_node" />
 	<node name="waypoint_selection" pkg="yeti_snowplow" type="waypoint_selection" />
+	<node name="joystick" pkg="yeti_snowplow" type="joystick" output="screen"/>
 </launch>

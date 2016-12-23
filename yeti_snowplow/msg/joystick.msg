@@ -1,0 +1,20 @@
+bool A
+bool B
+bool X
+bool Y
+bool LB
+bool RB
+bool Back
+bool Start
+bool Guide
+bool LS
+bool RS
+
+float32 LeftStick_LR
+float32 LeftStick_UD
+float32 RightStick_LR
+float32 RightStick_UD
+float32 LT
+float32 RT
+float32 DPad_LR
+float32 DPad_UD
