@@ -51,11 +51,10 @@ add_message_files(
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  waypoint.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -141,13 +140,17 @@ include_directories(
 
 # ADD NEW CPPs HERE
 add_executable(drive_mode_control src/drive_mode_control.cpp)
+add_dependencies(drive_mode_control yeti_snowplow_generate_messages_cpp)
 target_link_libraries(drive_mode_control ${catkin_LIBRARIES})
 
 add_executable(joystick src/joystick.cpp)
+add_dependencies(joystick yeti_snowplow_generate_messages_cpp)
 target_link_libraries(joystick ${catkin_LIBRARIES})
 
-add_executable(waypoint_selection src/waypoint_selection.cpp)
+add_executable(waypoint_selection src/waypoint_selection.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp)
+add_dependencies(waypoint_selection yeti_snowplow_generate_messages_cpp)
 target_link_libraries(waypoint_selection ${catkin_LIBRARIES})
+
 
 #############
 ## Install ##
