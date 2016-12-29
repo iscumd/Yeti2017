@@ -141,9 +141,11 @@ include_directories(
 
 # ADD NEW CPPs HERE
 add_executable(drive_mode_control src/drive_mode_control.cpp)
+add_dependencies(drive_mode_control yeti_snowplow_generate_messages_cpp)
 target_link_libraries(drive_mode_control ${catkin_LIBRARIES})
 
 add_executable(joystick src/joystick.cpp)
+add_dependencies(joystick yeti_snowplow_generate_messages_cpp)
 target_link_libraries(joystick ${catkin_LIBRARIES})
 
 add_executable(waypoint_selection src/waypoint_selection.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp)
