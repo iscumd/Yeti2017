@@ -1,30 +1,141 @@
 #include "ros/ros.h"
+#include "yeti_snowplow/robot_position.h"
 #include "yeti_snowplow/waypoint.h"
 
+#define _USE_MATH_DEFINES
+#include <math.h>
 #include <string>
+#include <time.h>
 #include <vector>
 using namespace std;
 
+#include "containers/CVAR.h"
 #include "containers/Target.h"
+
+ros::ServiceClient waypointClient;
+Target previousTarget;
+Target currentTarget;
+CVAR cvar;
+double lastTime, thisTime;
+double maxIntErr = 0.5;
+double destinationThresh = 0.5;
+
+double mathSign(double number){
+	//Returns the number's sign
+	//Equivalent to .NET's Math.Sign()
+	//number>0 = 1
+	//number=0 = 0
+	//number<0 = -1
+	if (number == 0){
+		return 0;
+	}
+	else {
+		return number / abs(number);
+	}
+}
+
+double adjust_angle(double angle, double circle){
+	//circle = 2pi for radians, 360 for degrees
+	// Subtract multiples of circle
+	angle -= floor(angle / circle) * circle;
+	angle -= floor(2 * angle / circle) * circle;
+
+	return angle;
+}
+
+void initPID(){
+	lastTime = ((double)clock()) / CLOCKS_PER_SEC;
+	cvar.pErr = cvar.iErr = cvar.dErr = 0;
+}
+
+void localizationCallback(const yeti_snowplow::robot_position::ConstPtr& location){	
+	/* This fires every time a new position is published */
+
+	double heading = location->heading;
+	int dir = (int)currentTarget.dir;
+	double dx, dy, s, c, dt;
+	double desiredAngle;
+
+	if (dir < 0){
+		heading = heading - M_PI * mathSign(heading);
+	}
+
+	dx = currentTarget.location.x - location->x;
+	dy = currentTarget.location.y - location->y;
+	
+	c = cos(heading);
+	s = sin(heading);
+
+	cvar.speed = currentTarget.speed;
+
+	thisTime = ((double)clock()) / CLOCKS_PER_SEC;
+	dt = thisTime - lastTime;
+
+	cvar.lastpErr = cvar.pErr;
+	cvar.pErr = adjust_angle(heading - desiredAngle, 2.0 * M_PI);
+	cvar.iErr = cvar.iErr + cvar.pErr * dt;
+	cvar.iErr = mathSign(cvar.iErr) * fmin(abs(cvar.iErr), maxIntErr);
+
+	if (dt != 0){
+		cvar.dErr = (cvar.pErr - cvar.lastpErr) / dt;
+	}
+	if (cos(cvar.pErr) > 0.5){ // +-60 degrees
+		cvar.kP = 0.5;
+		cvar.turn = -(cvar.kP * sin(cvar.pErr) *2 + cvar.kI * cvar.iErr + cvar.kD * cvar.dErr);  // Nattu
+	}
+	else {
+		cvar.turn = -0.5 * mathSign(cvar.pErr); //if you need to turnin place, then ignore PID
+	}
+	lastTime = thisTime;
+
+	if (cvar.targdist < destinationThresh){ //reached target
+		initPID();
+
+		previousTarget = currentTarget;
+
+		yeti_snowplow::waypoint waypointReq;
+		waypointReq.request.ID = previousTarget.location.id + 1;
+		if (waypointClient.call(waypointReq)){
+			currentTarget = Target(waypointReq.response.x, waypointReq.response.y, waypointReq.response.heading, waypointReq.response.dir, waypointReq.response.PID, waypointReq.response.speed);
+			currentTarget.location.id = waypointReq.request.ID;
+		}
+		else { //we've hit the last waypoint or the service is no longer available
+			//TODO
+		}
+	}
+}
 
 int main(int argc, char **argv){
 	ros::init(argc, argv, "navigation_pid");
 
 	ros::NodeHandle n;
 
-	ros::ServiceClient waypointClient = n.serviceClient<yeti_snowplow::waypoint>("waypoint");
-    yeti_snowplow::waypoint waypointSrv;
-    for (int i=0; i < 13; i++){        
-        waypointSrv.request.ID = i;
-        ROS_INFO("Sent request: %i", waypointSrv.request.ID);
-        while (waypointClient.call(waypointSrv) == false){
-            ROS_ERROR("Failed to call the waypoint service");
-            ROS_INFO("Sent request: %i", waypointSrv.request.ID);
-        }
+	waypointClient = n.serviceClient<yeti_snowplow::waypoint>("waypoint");
+	yeti_snowplow::waypoint waypointReq;
+	// for (int i=0; i < 13; i++){        
+	//     waypointReq.request.ID = i;
+	//     ROS_INFO("Sent request: %i", waypointReq.request.ID);
+	//     while (waypointClient.call(waypointReq) == false){
+	//         ROS_ERROR("Failed to call the waypoint service");
+	//         ROS_INFO("Sent request: %i", waypointReq.request.ID);
+	//     }
 
-        ROS_INFO("Received response: x=%f y=%f heading=%f dir=%i PID=%s speed=%f", waypointSrv.response.x, waypointSrv.response.y, waypointSrv.response.heading, waypointSrv.response.dir, waypointSrv.response.PID?"true":"false", waypointSrv.response.speed);
-    }
-    //ros::spin();
+	//     ROS_INFO("Received response: x=%f y=%f heading=%f dir=%i PID=%s speed=%f", waypointReq.response.x, waypointReq.response.y, waypointReq.response.heading, waypointReq.response.dir, waypointReq.response.PID?"true":"false", waypointReq.response.speed);
+	// }
+	waypointReq.request.ID = 0;
+	ROS_INFO("Sent request: %i", waypointReq.request.ID);
+	while (waypointClient.call(waypointReq) == false){ //the service may not be ready yet, so we'll keep trying until we get a response
+		ROS_ERROR("Failed to call the waypoint service; trying again");
+		ROS_INFO("Sent request: %i", waypointReq.request.ID);
+	}
+	currentTarget = Target(waypointReq.response.x, waypointReq.response.y, waypointReq.response.heading, waypointReq.response.dir, waypointReq.response.PID, waypointReq.response.speed);
+	currentTarget.location.id = 0;
+
+	initPID();
+
+	ros::Subscriber localizationSub = n.subscribe("localization", 1000, localizationCallback); //TODO: get name of localization topic
+
+	ros::spin();
 	
 	return 0;
 }

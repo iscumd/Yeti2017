@@ -48,6 +48,7 @@ find_package(catkin REQUIRED COMPONENTS
 add_message_files(
   FILES
   joystick.msg
+  robot_position.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -147,7 +148,7 @@ add_executable(joystick src/joystick.cpp)
 add_dependencies(joystick yeti_snowplow_generate_messages_cpp)
 target_link_libraries(joystick ${catkin_LIBRARIES})
 
-add_executable(navigation_pid src/navigation_pid.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp)
+add_executable(navigation_pid src/navigation_pid.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp src/containers/CVAR.cpp)
 add_dependencies(navigation_pid yeti_snowplow_generate_messages_cpp)
 target_link_libraries(navigation_pid ${catkin_LIBRARIES})
 
