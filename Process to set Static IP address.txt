@@ -1,0 +1,24 @@
+#To set the IP address to Statis you must edit the file /etc/network/interfaces
+#To do this, in a terminal type:
+#sudo nano /etc/network/interfaces
+#then replace the current contents with:
+
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet static
+address 192.168.0.99
+netmask 255.255.255.0
+gateway 192.168.0.0
+
+#Ctrl-X to save the changes you have made.
+#Once changes have been made then you need to restart the Network, and then disable and reenable the ethernet port.
+#to do this first run :
+#sudo service network-manager restart
+#sudo ifdown eth0 
+#sudo ifup eth0//you may get the following error: RTNETLINK answers: Invalid argument Failed to bring up eth0.
+
+#sudo service network-manager restart
+
+#then you should be good to go
