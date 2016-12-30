@@ -1,4 +1,5 @@
 <launch>
 	<node name="waypoint_selection" pkg="yeti_snowplow" type="waypoint_selection" output="screen" />
+	<node name="navigation_pid" pkg="yeti_snowplow" type="navigation_pid" output="screen" />
 	<param name="navigationFile" value="$(find yeti_snowplow)/data/navigationDay1.txt" />
 </launch>

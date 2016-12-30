@@ -1,6 +1,10 @@
 #include "Target.h"
 
 Target::Target(){
+	location = LocationPoint(0, 0, 0);
+	dir = forward;
+	PID = true;
+	speed = 0;
 }
 
 Target::Target(double _x, double _y, double _heading, int _dir, bool _PID, double _speed){
