@@ -53,7 +53,7 @@ vector<Target> ReadFile(string filename){
 
 bool waypoint(yeti_snowplow::waypoint::Request  &req,
               yeti_snowplow::waypoint::Response &res){
-	ROS_INFO("Request: %i", req.ID);
+	ROS_INFO("Received request: %i", req.ID);
 	if (req.ID > -1 && req.ID < targetLocationList.size()){
 		res.x = targetLocationList[req.ID].location.x;
 		res.y = targetLocationList[req.ID].location.y;
@@ -61,7 +61,7 @@ bool waypoint(yeti_snowplow::waypoint::Request  &req,
 		res.dir = targetLocationList[req.ID].dir;
 		res.PID = targetLocationList[req.ID].PID;
 		res.speed = targetLocationList[req.ID].speed;
-		ROS_INFO("Response: x=%f y=%f heading=%f dir=%i PID=%s speed=%f", res.x, res.y, res.heading, res.dir, res.PID?"true":"false", res.speed);
+		ROS_INFO("Sent response: x=%f y=%f heading=%f dir=%i PID=%s speed=%f", res.x, res.y, res.heading, res.dir, res.PID?"true":"false", res.speed);
 		return true;
 	}
 	else {
