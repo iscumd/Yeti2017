@@ -36,7 +36,23 @@ void joystickCallback(const sensor_msgs::Joy::ConstPtr& joy){
 	msg.B = BUTTON_B;
 	msg.X = BUTTON_X;
 	msg.Y = BUTTON_Y;
-	// ROS_INFO("%s", strs.str().c_str());
+	msg.LB = BUTTON_LB;
+	msg.RB = BUTTON_RB;
+	msg.Back = BUTTON_BACK;
+	msg.Start = BUTTON_START;
+	msg.Guide = BUTTON_GUIDE;
+	msg.LS = BUTTON_LS;
+	msg.RS = BUTTON_RS;
+
+	msg.LeftStick_LR = AXIS_L_LR;
+	msg.LeftStick_UD = AXIS_L_UD;
+	msg.RightStick_LR = AXIS_R_LR;
+	msg.RightStick_UD = AXIS_R_UD;
+	msg.LT = AXIS_LT;
+	msg.RT = AXIS_RT;
+	msg.DPad_LR = AXIS_DPAD_LR;
+	msg.DPad_UD = AXIS_DPAD_UD;
+
 	joystickPub.publish(msg);
 }
 
