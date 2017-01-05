@@ -152,6 +152,10 @@ add_executable(navigation_pid src/navigation_pid.cpp src/containers/Target.cpp s
 add_dependencies(navigation_pid yeti_snowplow_generate_messages_cpp)
 target_link_libraries(navigation_pid ${catkin_LIBRARIES})
 
+add_executable(roboteq src/roboteq.cpp)
+add_dependencies(roboteq yeti_snowplow_generate_messages_cpp)
+target_link_libraries(roboteq ${catkin_LIBRARIES})
+
 add_executable(waypoint_selection src/waypoint_selection.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp)
 add_dependencies(waypoint_selection yeti_snowplow_generate_messages_cpp)
 target_link_libraries(waypoint_selection ${catkin_LIBRARIES})
