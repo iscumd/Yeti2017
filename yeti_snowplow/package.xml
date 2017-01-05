@@ -46,10 +46,14 @@
   <build_depend>roscpp</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>message_generation</build_depend>
+  <build_depend>ax2550</build_depend>
+  <!--<build_depend>lms1xx</build_depend>-->
   <run_depend>joy</run_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>std_msgs</run_depend>
   <run_depend>message_runtime</run_depend>
+  <run_depend>ax2550</run_depend>
+  <!--<run_depend>lms1xx</run_depend>-->
 
 
   <!-- The export tag contains other, unspecified, tags -->
