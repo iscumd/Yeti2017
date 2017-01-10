@@ -1,4 +1,5 @@
 #include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
 #include "yeti_snowplow/robot_position.h"
 #include "yeti_snowplow/waypoint.h"
 
@@ -12,6 +13,7 @@ using namespace std;
 #include "containers/CVAR.h"
 #include "containers/Target.h"
 
+ros::Publisher turnPub;
 ros::ServiceClient waypointClient;
 Target previousTarget;
 Target currentTarget;
@@ -88,6 +90,11 @@ void localizationCallback(const yeti_snowplow::robot_position::ConstPtr& locatio
 	}
 	lastTime = thisTime;
 
+	geometry_msgs::Twist msg;
+	msg.linear.x = cvar.speed;
+	msg.angular.z = cvar.turn;
+	turnPub.publish(msg);
+
 	if (cvar.targdist < destinationThresh){ //reached target
 		initPID();
 
@@ -109,6 +116,8 @@ int main(int argc, char **argv){
 	ros::init(argc, argv, "navigation_pid");
 
 	ros::NodeHandle n;
+
+	turnPub = n.advertise<geometry_msgs::Twist>("navigationPID", 5);
 
 	waypointClient = n.serviceClient<yeti_snowplow::waypoint>("waypoint");
 	yeti_snowplow::waypoint waypointReq;
@@ -133,7 +142,7 @@ int main(int argc, char **argv){
 
 	initPID();
 
-	ros::Subscriber localizationSub = n.subscribe("localization", 1000, localizationCallback); //TODO: get name of localization topic
+	ros::Subscriber localizationSub = n.subscribe("localization", 5, localizationCallback); //TODO: get name of localization topic
 
 	ros::spin();
 	

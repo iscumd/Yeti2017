@@ -9,6 +9,8 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   std_msgs
   message_generation
+  serial
+  serial_utils
 )
 
 ## System dependencies are found with CMake's conventions
@@ -104,7 +106,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES yeti_snowplow
-  CATKIN_DEPENDS joy roscpp std_msgs message_runtime
+  CATKIN_DEPENDS joy roscpp std_msgs message_runtime serial serial_utils
 #  DEPENDS system_lib
 )
 
@@ -160,7 +162,7 @@ target_link_libraries(obstacle_reaction ${catkin_LIBRARIES})
 
 add_executable(roboteq src/roboteq.cpp)
 add_dependencies(roboteq yeti_snowplow_generate_messages_cpp)
-target_link_libraries(roboteq ${catkin_LIBRARIES})
+target_link_libraries(roboteq ${serial_LIBRARIES} ${serial_utils_LIBRARIES} ${catkin_LIBRARIES})
 
 add_executable(waypoint_selection src/waypoint_selection.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp)
 add_dependencies(waypoint_selection yeti_snowplow_generate_messages_cpp)
