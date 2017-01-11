@@ -1,6 +1,8 @@
 #include "ros/ros.h"
 #include "geometry_msgs/Twist.h"
+#include "yeti_snowplow/location_point.h"
 #include "yeti_snowplow/robot_position.h"
+#include "yeti_snowplow/target.h"
 #include "yeti_snowplow/waypoint.h"
 
 #define _USE_MATH_DEFINES
@@ -11,12 +13,11 @@
 using namespace std;
 
 #include "containers/CVAR.h"
-#include "containers/Target.h"
 
 ros::Publisher turnPub;
 ros::ServiceClient waypointClient;
-Target previousTarget;
-Target currentTarget;
+yeti_snowplow::target previousTarget;
+yeti_snowplow::target currentTarget;
 CVAR cvar;
 double lastTime, thisTime;
 double maxIntErr = 0.5;
@@ -103,8 +104,7 @@ void localizationCallback(const yeti_snowplow::robot_position::ConstPtr& locatio
 		yeti_snowplow::waypoint waypointReq;
 		waypointReq.request.ID = previousTarget.location.id + 1;
 		if (waypointClient.call(waypointReq)){
-			currentTarget = Target(waypointReq.response.x, waypointReq.response.y, waypointReq.response.heading, waypointReq.response.dir, waypointReq.response.PID, waypointReq.response.speed);
-			currentTarget.location.id = waypointReq.request.ID;
+			currentTarget = waypointReq.response.waypoint;
 		}
 		else { //we've hit the last waypoint or the service is no longer available
 			//TODO
@@ -137,8 +137,7 @@ int main(int argc, char **argv){
 		ROS_ERROR("Failed to call the waypoint service; trying again");
 		ROS_INFO("Sent request: %i", waypointReq.request.ID);
 	}
-	currentTarget = Target(waypointReq.response.x, waypointReq.response.y, waypointReq.response.heading, waypointReq.response.dir, waypointReq.response.PID, waypointReq.response.speed);
-	currentTarget.location.id = 0;
+	currentTarget = waypointReq.response.waypoint;
 
 	initPID();
 
