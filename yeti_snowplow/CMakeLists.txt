@@ -11,6 +11,8 @@ find_package(catkin REQUIRED COMPONENTS
   message_generation
   serial
   serial_utils
+  laser_geometry
+  sensor_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -70,6 +72,7 @@ add_service_files(
 generate_messages(
   DEPENDENCIES
   std_msgs  # Or other packages containing msgs
+  sensor_msgs
 )
 
 ################################################
@@ -104,7 +107,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES yeti_snowplow
-  CATKIN_DEPENDS joy roscpp std_msgs message_runtime serial serial_utils
+  CATKIN_DEPENDS joy roscpp std_msgs message_runtime serial serial_utils laser_geometry sensor_msgs
 #  DEPENDS system_lib
 )
 
@@ -162,6 +165,13 @@ add_executable(waypoint_selection src/waypoint_selection.cpp src/containers/Targ
 add_dependencies(waypoint_selection yeti_snowplow_generate_messages_cpp)
 target_link_libraries(waypoint_selection ${catkin_LIBRARIES})
 
+add_executable(scan_to_xy src/scan_to_xy_node.cpp)
+add_dependencies(scan_to_xy yeti_snowplow_generate_messages_cpp)
+target_link_libraries(scan_to_xy ${catkin_LIBRARIES})
+
+add_executable(localization_node src/localization_node.cpp)
+add_dependencies(localization_node yeti_snowplow_generate_messages_cpp)
+target_link_libraries(localization_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##

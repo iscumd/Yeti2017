@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="yeti_snowplow" type="localization_node" name="localization_node" output="screen"/>
+  	<node pkg="yeti_snowplow" type="scan_to_xy" name="scan_to_xy" output="screen" />
+	  
+	<!--<param name="landmarkLocationFile" value="$(find yeti_snowplow)/data/landmark_locations_Qualification.txt" />-->
+	<!--<param name="landmarkLocationFile" value="$(find yeti_snowplow)/data/landmark_locations_Single_I.txt" />-->
+	<param name="landmarkLocationFile" value="$(find yeti_snowplow)/data/landmark_locations_Triple_I.txt" />
+</launch>
