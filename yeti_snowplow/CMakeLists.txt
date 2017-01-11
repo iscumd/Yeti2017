@@ -156,6 +156,10 @@ add_executable(navigation_pid src/navigation_pid.cpp src/containers/Target.cpp s
 add_dependencies(navigation_pid yeti_snowplow_generate_messages_cpp)
 target_link_libraries(navigation_pid ${catkin_LIBRARIES})
 
+add_executable(obstacle_detection src/obstacle_detection.cpp)
+add_dependencies(obstacle_detection yeti_snowplow_generate_messages_cpp)
+target_link_libraries(obstacle_detection ${catkin_LIBRARIES})
+
 add_executable(obstacle_reaction src/obstacle_reaction.cpp)
 add_dependencies(obstacle_reaction yeti_snowplow_generate_messages_cpp)
 target_link_libraries(obstacle_reaction ${catkin_LIBRARIES})
