@@ -1,5 +1,5 @@
 #include "ros/ros.h"
-#include "yeti_snowplow/joystick.h"
+#include "yeti_snowplow/wheel_speeds.h"
 
 #include <math.h>
 #include <serial/serial.h>
@@ -20,26 +20,15 @@ serial::utils::SerialListener serialListener;
 bool roboteqIsConnected = false;
 double leftSpeed = 0, rightSpeed = 0;
 
-// ros::Publisher roboteqPub;
-
-void joystickCallback(const yeti_snowplow::joystick::ConstPtr& joy){	
+void driveModeCallback(const yeti_snowplow::wheel_speeds::ConstPtr& msg){	
 	/* This fires every time a button is pressed/released
 	and when an axis changes (even if it doesn't leave the
 	deadzone). */
 
-	float leftWheelSpeed = 0.0, rightWheelSpeed = 0.0;
-	float joySpeed = 0.0, joyTurn = 0.0;
-	float speedMultiplier = 127.0; 
-
-	joySpeed = joy->LeftStick_UD;
-	joyTurn = joy->LeftStick_LR;	
-
-	leftWheelSpeed = (joySpeed - joyTurn) * speedMultiplier;
-	rightWheelSpeed = (joySpeed + joyTurn) * speedMultiplier;
-	leftSpeed = joy->A ? leftWheelSpeed : 0; //left
-	rightSpeed = joy->A ? rightWheelSpeed : 0; //right
+	leftSpeed = msg->left;
+	rightSpeed = msg->right;
 	
-	ROS_INFO("%s left=%f right=%f", joy->A ? "on" : "off", leftSpeed, rightSpeed);
+	ROS_INFO("Roboteq: left wheel=%f right wheel=%f", leftSpeed, rightSpeed);
 }
 
 void disconnect(){
@@ -168,7 +157,7 @@ int main(int argc, char **argv){
 	// Serial port parameter
 	n.param("serial_port", port, std::string("/dev/ttyUSB0"));
 
-	ros::Subscriber joystickSub = n.subscribe("joystick", 5, joystickCallback);
+	ros::Subscriber driveModeSub = n.subscribe("wheelSpeeds", 5, driveModeCallback);
 
 	ros::Rate loopRate(100); //Hz
 	while(ros::ok()) {

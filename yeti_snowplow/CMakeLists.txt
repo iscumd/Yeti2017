@@ -58,6 +58,7 @@ add_message_files(
   robot_position.msg
   target.msg
   turn.msg
+  wheel_speeds.msg
 )
 
 ## Generate services in the 'srv' folder
@@ -157,6 +158,10 @@ target_link_libraries(drive_mode_control ${catkin_LIBRARIES})
 add_executable(joystick src/joystick.cpp)
 add_dependencies(joystick yeti_snowplow_generate_messages_cpp)
 target_link_libraries(joystick ${catkin_LIBRARIES})
+
+add_executable(manual_control src/manual_control.cpp)
+add_dependencies(manual_control yeti_snowplow_generate_messages_cpp)
+target_link_libraries(manual_control ${catkin_LIBRARIES})
 
 #add_executable(navigation_pid src/navigation_pid.cpp src/containers/Target.cpp src/containers/LocationPoint.cpp src/containers/CVAR.cpp)
 add_executable(navigation_pid src/navigation_pid.cpp src/containers/CVAR.cpp)

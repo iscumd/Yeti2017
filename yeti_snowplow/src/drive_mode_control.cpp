@@ -1,16 +1,46 @@
 #include "ros/ros.h"
+#include "geometry_msgs/Twist.h"
 #include "yeti_snowplow/joystick.h"
+#include "yeti_snowplow/wheel_speeds.h"
 
 #include <sstream>
+#include <string>
 
-void joystickCallback(const yeti_snowplow::joystick::ConstPtr& msg){
-	std::stringstream ss;
+bool startButtonDown = false;
+bool autoMode = false;
+ros::Publisher wheelSpeedPub;
 
-	if(msg->A){ ss << " A"; }
-	if(msg->B){ ss << " B"; }
-	if(msg->X){ ss << " X"; }
-	if(msg->Y){ ss << " Y"; }
-	ROS_INFO("The joystick says:%s", ss.str().c_str());
+void joystickCallback(const yeti_snowplow::joystick::ConstPtr& joy){	
+	/* This fires every time a button is pressed/released
+	and when an axis changes (even if it doesn't leave the
+	deadzone). */
+
+	/* We track the button state to ensure you can't 
+	accidentally hold down Start and press another 
+	button to toggle the mode */
+	if(joy->Start){ //The Start button has been pressed
+		startButtonDown = true;
+	}
+	if(startButtonDown && !joy->Start){ //The Start button has been released
+		startButtonDown = false;
+		autoMode = !autoMode;
+		ROS_INFO("Drive Mode Control: Switching to %s mode.", autoMode ? "AUTO" : "MANUAL");
+	}
+}
+
+void manualCallback(const geometry_msgs::Twist::ConstPtr& msg){
+	if(!autoMode){
+		float leftWheelSpeed = 0.0, rightWheelSpeed = 0.0;
+		float speedMultiplier = 127.0; 
+
+		leftWheelSpeed = (msg->linear.x - msg->angular.z) * speedMultiplier;
+		rightWheelSpeed = (msg->linear.x + msg->angular.z) * speedMultiplier;
+
+		yeti_snowplow::wheel_speeds msg;
+		msg.left = leftWheelSpeed;
+		msg.right =  rightWheelSpeed;
+		wheelSpeedPub.publish(msg);
+	}
 }
 
 int main(int argc, char **argv){
@@ -18,7 +48,11 @@ int main(int argc, char **argv){
 
 	ros::NodeHandle n;
 
-	ros::Subscriber joystickSub = n.subscribe("joystick", 1000, joystickCallback);
+	wheelSpeedPub = n.advertise<yeti_snowplow::wheel_speeds>("wheelSpeeds", 5);
+
+	ros::Subscriber joystickSub = n.subscribe("joystick", 5, joystickCallback);
+	ros::Subscriber manualSub = n.subscribe("manualControl", 5, manualCallback);
+	//ros::Subscriber autoSub = n.subscribe("autoControl", 5, autoCallback);
 
 	ros::spin();
 	

@@ -1,6 +1,8 @@
 <launch>
-	<node name="joy_node" pkg="joy" type="joy_node" />
-	<node name="drive_mode_control" pkg="yeti_snowplow" type="drive_mode_control" output="screen"/>
-	<node name="joystick" pkg="yeti_snowplow" type="joystick"/>
-	<node name="waypoint_selection" pkg="yeti_snowplow" type="waypoint_selection" />
+	<node pkg="joy" type="joy_node" name="joy_node" />
+	<node pkg="yeti_snowplow" type="joystick" name="joystick"/>
+	<node pkg="yeti_snowplow" type="manual_control" name="manual_control" output="screen"/>
+	
+	<node pkg="yeti_snowplow" type="drive_mode_control" name="drive_mode_control" output="screen"/>
+	<node pkg="yeti_snowplow" type="roboteq" name="roboteq" output="screen"/>
 </launch>

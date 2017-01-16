@@ -1,11 +1,11 @@
 #include "ros/ros.h"
-#include "yeti_snowplow/obstacle_position.h"
+#include "yeti_snowplow/obstacles.h"
 #include "yeti_snowplow/robot_position.h"
 #include "yeti_snowplow/turn.h"
 
 ros::Publisher turnPub;
 
-void obstaclePositionsCallback(const yeti_snowplow::obstacle_position::ConstPtr& obstaclePositions){
+void obstaclePositionsCallback(const yeti_snowplow::obstacles::ConstPtr& obstaclePositions){
 	// geometry_msgs::Twist msg;
 	// msg.angular.z = joy->A ? joy->LeftStick_UD : 0; //left
 	// msg.linear.x = joy->A ? joy->LeftStick_UD : 0; //right
@@ -28,7 +28,7 @@ int main(int argc, char **argv){
 
 	turnPub = n.advertise<yeti_snowplow::turn>("obstacle_reaction_turn", 1000);
 
-	ros::Subscriber obstaclePositionsSub = n.subscribe("obstacle_positions", 1000, obstaclePositionsCallback);
+	ros::Subscriber obstaclePositionsSub = n.subscribe("obstacles", 1000, obstaclePositionsCallback);
     ros::Subscriber robotPositionSub = n.subscribe("robot_position", 1000, robotPositionCallback);
 
 	ros::spin();
