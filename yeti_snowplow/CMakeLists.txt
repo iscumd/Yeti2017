@@ -53,7 +53,8 @@ add_message_files(
   FILES
   joystick.msg
   location_point.msg
-  obstacle_position.msg
+  obstacle.msg
+  obstacles.msg
   robot_position.msg
   target.msg
   turn.msg
