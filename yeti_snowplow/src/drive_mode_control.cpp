@@ -24,9 +24,8 @@ void joystickCallback(const yeti_snowplow::joystick::ConstPtr& joy){
 	if(startButtonDown && !joy->Start){ //The Start button has been released
 		startButtonDown = false;
 		autoMode = !autoMode;
+		ROS_INFO("Drive Mode Control: Switching to %s mode.", autoMode ? "AUTO" : "MANUAL");
 	}
-
-	ROS_INFO("Drive Mode Control: Switching to %s mode.", autoMode ? "AUTO" : "MANUAL");
 }
 
 void manualCallback(const geometry_msgs::Twist::ConstPtr& msg){
