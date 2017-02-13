@@ -1,0 +1,25 @@
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Lidar\obj\Debug\Lidar.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Lidar\obj\Debug\Lidar.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Lidar\obj\Debug\Lidar.csprojResolveAssemblyReference.cache
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Desktop\yeti2017\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Desktop\yeti2017\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Desktop\yeti2017\Hardware\Lidar\obj\Debug\Lidar.csprojResolveAssemblyReference.cache
+C:\Users\isc\Desktop\yeti2017\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Desktop\yeti2017\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\Hardware\Lidar\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\Hardware\Lidar\obj\Debug\Lidar.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\Hardware\Lidar\obj\Debug\Yeti2015.Hardware.Lidar.pdb

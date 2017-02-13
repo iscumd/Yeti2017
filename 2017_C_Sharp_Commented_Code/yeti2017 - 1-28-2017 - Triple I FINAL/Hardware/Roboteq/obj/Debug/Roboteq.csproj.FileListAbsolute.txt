@@ -1,0 +1,20 @@
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\Hardware\Roboteq\obj\Debug\Roboteq.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Roboteq\obj\Debug\Roboteq.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Roboteq\obj\Debug\Roboteq.csprojResolveAssemblyReference.cache
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Desktop\yeti2017\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Desktop\yeti2017\Hardware\Roboteq\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Desktop\yeti2017\Hardware\Roboteq\obj\Debug\Roboteq.csprojResolveAssemblyReference.cache
+C:\Users\isc\Desktop\yeti2017\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Desktop\yeti2017\Hardware\Roboteq\obj\Debug\Yeti2015.Hardware.Roboteq.pdb

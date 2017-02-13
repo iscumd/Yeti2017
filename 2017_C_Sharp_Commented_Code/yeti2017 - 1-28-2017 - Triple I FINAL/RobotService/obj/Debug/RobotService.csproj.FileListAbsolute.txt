@@ -1,0 +1,120 @@
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\Brendan\Desktop\2016 Commented Code\yeti2015\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Desktop\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Desktop\yeti2017\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Desktop\yeti2017\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Desktop\yeti2017\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Test\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Test\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - Working\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-27-2017 - Single I - 1-28\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Single I FINAL\RobotService\obj\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.RobotService.exe.config
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\obj\Debug\RobotService.csprojResolveAssemblyReference.cache
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\obj\Debug\Yeti2015.RobotService.exe
+C:\Users\isc\Documents\04 Yeti\Mikes Workspace\yeti2017 - 1-28-2017 - Triple I FINAL\RobotService\obj\Debug\Yeti2015.RobotService.pdb

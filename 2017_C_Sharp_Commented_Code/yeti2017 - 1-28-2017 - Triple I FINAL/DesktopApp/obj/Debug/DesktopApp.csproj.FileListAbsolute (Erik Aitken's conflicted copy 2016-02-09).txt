@@ -1,0 +1,48 @@
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\obj\Debug\DesktopApp.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.Form1.resources
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.Properties.Resources.resources
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\obj\Debug\DesktopApp.csproj.GenerateResource.Cache
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe.config
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Source\Repos\2015-Yeti\Yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2015-Yeti-Competition\Yeti 2015 Day 2 Code\Yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe.config
+C:\Users\Erik\Dropbox\2015-Yeti-Competition\Yeti 2015 Day 2 Code\Yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Dropbox\2015-Yeti-Competition\Yeti 2015 Day 2 Code\Yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe.config
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\obj\Debug\DesktopApp.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.Form1.resources
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.Properties.Resources.resources
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\2015 code\yeti 2015 day 2 code\yeti2015\DesktopApp\obj\Debug\DesktopApp.csproj.GenerateResource.Cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe.config
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Lidar.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.RobotService.exe
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Roboteq.dll
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Lidar.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.RobotService.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\bin\Debug\Yeti2015.Hardware.Roboteq.pdb
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\obj\Debug\DesktopApp.csprojResolveAssemblyReference.cache
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.Form1.resources
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\obj\Debug\Yeti2015.DesktopApp.Properties.Resources.resources
+C:\Users\Erik\Dropbox\2016-Yeti-Competition\Code\yeti2015\DesktopApp\obj\Debug\DesktopApp.csproj.GenerateResource.Cache

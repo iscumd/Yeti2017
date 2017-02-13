@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopApp", "DesktopApp\DesktopApp.csproj", "{CCCEBA21-1D9F-4711-9482-246BF51D7002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotService", "RobotService\RobotService.csproj", "{4239B48C-500A-46FE-89A5-7DC99C34E720}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hardware", "Hardware", "{9E6C94FA-4BFC-4EF4-9159-0DE5AB37B74E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roboteq", "Hardware\Roboteq\Roboteq.csproj", "{98851EB8-D9BD-4656-8531-1C2A4366DF63}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidar", "Hardware\Lidar\Lidar.csproj", "{09D553BE-C99B-486F-994D-4EC8D6C6D539}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{587F276B-FEA1-4B19-BEC4-5200C8838BA6}"
+	ProjectSection(SolutionItems) = preProject
+		Performance1.psess = Performance1.psess
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCCEBA21-1D9F-4711-9482-246BF51D7002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCEBA21-1D9F-4711-9482-246BF51D7002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCEBA21-1D9F-4711-9482-246BF51D7002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCEBA21-1D9F-4711-9482-246BF51D7002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4239B48C-500A-46FE-89A5-7DC99C34E720}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4239B48C-500A-46FE-89A5-7DC99C34E720}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4239B48C-500A-46FE-89A5-7DC99C34E720}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4239B48C-500A-46FE-89A5-7DC99C34E720}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98851EB8-D9BD-4656-8531-1C2A4366DF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98851EB8-D9BD-4656-8531-1C2A4366DF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98851EB8-D9BD-4656-8531-1C2A4366DF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98851EB8-D9BD-4656-8531-1C2A4366DF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D553BE-C99B-486F-994D-4EC8D6C6D539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D553BE-C99B-486F-994D-4EC8D6C6D539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D553BE-C99B-486F-994D-4EC8D6C6D539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D553BE-C99B-486F-994D-4EC8D6C6D539}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{98851EB8-D9BD-4656-8531-1C2A4366DF63} = {9E6C94FA-4BFC-4EF4-9159-0DE5AB37B74E}
+		{09D553BE-C99B-486F-994D-4EC8D6C6D539} = {9E6C94FA-4BFC-4EF4-9159-0DE5AB37B74E}
+	EndGlobalSection
+EndGlobal
