@@ -49,9 +49,10 @@ namespace Yeti2015.RobotService
         const double maxSpeed = .7;// 1; //0.95; //0.85; //0.85; // 0.40
 
     //Initialize tolerance thresholds and time saving for Slip detection
-        const double NoMovementTolerance = 0.1;
-        const double NoRotationTolerance = 5.0;
-        private static DateTime lastStuckTime;
+        const double NoMovementTolerance = 0.1;// 10 cm
+        const double NoRotationTolerance = 5.0; //5 degrees
+        private static DateTime lastStuckTime; //save last stuck time
+
      //private static TimeSpan reverseDuration = new TimeSpan(0, 0, 0, 0, 500); // 0.5 Seconds
         private static TimeSpan reverseDuration = new TimeSpan(0, 0, 0, 0, 800); // 0.5 Seconds
         private static float reverseSpeed = -0.5f;
@@ -133,12 +134,15 @@ namespace Yeti2015.RobotService
             if (EnableGUICalls) { NewObstacleData.Invoke(myObstacles, EventArgs.Empty); }//print the obstacles to the GUI
 
         //SLIP Dection
-            if (YetiHistory.Count > YetiHistorySize)//check that the Queue which saves yeti location is full. Only Dequeue old location if it is full
+            //check that the Queue which saves yeti location is full. Only Dequeue old location if it is full
+            if (YetiHistory.Count > YetiHistorySize)
             {
                 YetiHistory.Dequeue();// if it is full then remove the oldest location
             }
             YetiHistory.Enqueue(new LocationPoint(YetiLocation.X, YetiLocation.Y, YetiLocation.Heading));//add the newest location
-            if (YetiHistory.Count >= YetiHistorySize)//check that the Queue which saves yeti location is full. Stall detection should only trigger if the queue is full!
+
+            //check that the Queue which saves yeti location is full. Stall detection should only trigger if the queue is full!
+            if (YetiHistory.Count >= YetiHistorySize)
             {
                 //Find Maximum and Minimums of X, Y and Heading 
                 var minX = YetiHistory.Min(item => item.X);
@@ -148,8 +152,10 @@ namespace Yeti2015.RobotService
                 var minHeading = YetiHistory.Min(item => item.Heading);
                 var maxHeading = YetiHistory.Max(item => item.Heading);
 
-                // if no XY movement, no rotation, and beyond first waypoint.Beyond first way point is key!!!! Otherwise yeti will back up at the beginning if you wait to long!
-                if ((Math.Pow(maxX - minX, 2) + Math.Pow(maxY - minY, 2) < NoMovementTolerance) && maxHeading - minHeading < NoRotationTolerance && TargetLocation.location.id > 1 && !movingObstacles)
+                // if no XY movement, no rotation, and beyond first waypoint.Beyond first way point is key!!!! 
+                //Otherwise yeti will back up at the beginning if you wait to long!
+                if ((Math.Pow(maxX - minX, 2) + Math.Pow(maxY - minY, 2) < NoMovementTolerance) 
+                            && maxHeading - minHeading < NoRotationTolerance && TargetLocation.location.id > 1 && !movingObstacles)
                 {
                     lastStuckTime = DateTime.Now;//save the time which slipping was detected 
                     YetiHistory.Clear();// clear the QUeue so that stall detection cannot occur again until the queue is full

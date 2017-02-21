@@ -13,26 +13,28 @@ namespace Yeti2015.RobotService
     {
         static private LocationPoint previousRobotLocation = new LocationPoint();//this holds where the robot previously was so that the determine robot location can start its approach from this location
         static int LM_POINTS_THRESH = 3;// this is the minimum number of LiDAR points needed for a landmark to be considered a landmark
-       
 
+
+
+        /// <summary>
+        /// //The brains of Yeti!
+        //Localizatino revolves around this function entirely, which is by far the most complicated thing about yeti,
+        // There are really three necassary things for this to work:CLM, Robot Location, Tolerance
+        /// </summary>
+        /// <param name="CLM">list of landmarks which the robot currently sees</param>
+        /// <param name="robotLocation">the previously calculated position of the robot</param>
+        /// <param name="tolerance">the tolerance of the derivative of change in sum of error squared to be considered a local minimum</param>
+        /// <param name="Lspeed">not needed, but is used to determine if the robot is trying to move</param>
+        /// <param name="Rspeed">not needed, but is used to determine if the robot is trying to move</param>
+        /// <param name="minSpeed">not needed, but is used to determine if the robot is trying to move</param>
+        /// <returns></returns>
         public static LocationPoint DetermineRobotLocation(List<LocationPoint> CLM, LocationPoint robotLocation, double tolerance, float Lspeed, float Rspeed, float minSpeed)
         {
-            int JMAX = 15;
+            int JMAX = 15;//Maximum number of attempts to converge on a local minimum of the robots location
 
-            double mu = 0.1; // (Only read)
+            double mu = 0.1; //initial learning rate(used in Gradient Descent)
 
-            ////LocationPoint previousRobotLocation = new LocationPoint(robotLocation.X, robotLocation.Y, robotLocation.Heading);
-            ////double px = 0.0;  // Previous Robot X
-            ////double pt = 0.0;  // Previous Robot Theta 
-            ////double py = 0.0;  // Previous Robot Y
-            double maxx = 0.25;
-            double minx = 0.0001;
-            double maxy = 0.25;
-            double miny = 0.0001;
-            double maxt = 5.0 * (Math.PI / 180.0);
-            double mint = 0.1 * (Math.PI / 180.0);
-
-            bool updateh = false;
+            bool updateh = false;//flag for it the hessian matrix should be updated
             double[,] H = new double[3, 3]; // Hessian of 2nd Derivatives
             double[,] H_lm = new double[3, 3];
             double[,] H_inv = new double[3, 3];  // Matrix Inverse of H_lm
@@ -46,16 +48,15 @@ namespace Yeti2015.RobotService
             double dt;  // Robot Delta Theta
             double det;  // Determinant of H_lm
 
+            //initially use the last robots location as the intial guess of where the robot is.
             var thisRobotLocation = new LocationPoint(robotLocation.X, robotLocation.Y, robotLocation.Heading);
-            ////double tx = robotLocation.X;  // Robot X
-            ////double ty = robotLocation.Y;  // Robot Y
-            ////double tt = robotLocation.Heading;  // Robot Theta
-            double errsqrd = 0.0;  // E
-            double derr = 0.0;
-            double lasterrsqrd = 99999.0;//was 0.0
-            double lambda = 10.0;
+            
+            double errsqrd = 0.0;  // Sum of Errors Squared
+            double derr = 0.0; // Sum of Errors (not squared)
+            double lasterrsqrd = 99999.0;//inital error is set to infinity.
+            double lambda = 10.0;// Levenburg Marquardt step Value
 
-            /*Set Hessian To Zero*/
+            /*INitialize Hessian Matrix To Zero*/
             for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < 3; j++)
@@ -64,64 +65,69 @@ namespace Yeti2015.RobotService
                 }
             }
 
-            /*Initalize Diag*/
+            /*Attempt to Converge on robot location*/
             for (int j = 0; j < JMAX; j++)
             {
-                errsqrd = 0;
-                derr = 0;
+                errsqrd = 0; // reset the error squared for the new position which is to be calculated
+                derr = 0; // reset the errors derivative.
 
-                if (j == 0)
+                if (j == 0)// on first attempt to converge
                 {
-                    updateh = true;
-
-                    //foreach (var currentLandmark in CLM)
-                    //{
-                    //    ex = currentLandmark.X - thisRobotLocation.X - currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading);  // Formula 4
-                    //    ey = currentLandmark.Y - thisRobotLocation.Y - currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading);  // Formula 5
-                    lasterrsqrd = 99999.0; //Math.Pow(ex, 2) + Math.Pow(ey, 2);  // Formula 3 (Inside Summation)
-                    //}
+                    updateh = true;// it is necassary to update the hessian matrix
+                    lasterrsqrd = 99999.0; //initial error squared is set to inifinity so that first attempt at convergence is accepted
                 }
 
-                if (updateh)
+                if (updateh) //update the hessian matrix(IE Calculate new position entirely)
                 {
+                    //reset the hessian matrix to zeros
                     for (int i = 0; i < 3; i++)
                         for (int k = 0; k < 3; k++)
                             H[i, k] = 0.0;
 
-                    H[0, 0] = H[1, 1] = H[2, 2] = mu * CLM.Count;  // Formula 21
+                    //place learning rate on diagonal of the hessian
+                    H[0, 0] = H[1, 1] = H[2, 2] = mu * CLM.Count;  
+
+                    //initialize error to non-zero (further away robot positions should be punished a little more heavily than previous
                     x_err = mu * CLM.Count * (previousRobotLocation.X - thisRobotLocation.X);
                     y_err = mu * CLM.Count * (previousRobotLocation.Y - thisRobotLocation.Y);
                     t_err = mu * CLM.Count * (previousRobotLocation.Heading - thisRobotLocation.Heading);
 
-                    foreach (var currentLandmark in CLM)
+                    foreach (var currentLandmark in CLM)//loop through each landmark yeti can see
                     {
-                        /*First Derivative*/
+                        //figure out the cost in x and cost in y
                         ex = currentLandmark.X - thisRobotLocation.X - 
-                            currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading);  // Formula 4
+                            currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading);  // this is delta X for landmark i (equation 2 in ION GNSS Paper)
                         ey = currentLandmark.Y - thisRobotLocation.Y 
-                            - currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading);  // Formula 5
+                            - currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading);  //this is delta y for landmark i(equation 3 in ION GNSS Paper)
 
-                        currentLandmark.correctedX = currentLandmark.X - ex;
-                        currentLandmark.correctedY = currentLandmark.Y - ey;
+                        //saving corrected landmark locations for correct landmarks
+                        currentLandmark.correctedX = currentLandmark.X - ex;// save the correct X coordinate of the landmark for the correct landmarks function
+                        currentLandmark.correctedY = currentLandmark.Y - ey;// save the correct Y coordinate of the landmark for the correct landmarks function. 
+                        //Note that this is for this robot location, which may be rejected.
+                        
+                        derr += Math.Abs(ex) +Math.Abs( ey);// add the errors in both coordinates
+                        errsqrd += Math.Pow(ex, 2) + Math.Pow(ey, 2);  // add this error to the sum of error squared. (equation 1 in ION GNSS Paper)
+                        
+                        x_err += ex;//increment the total error in the X coordinate for this robot location.
+                        y_err += ey;//increment the total erro rin the Y coordinate for this robot location
+                        //increment the total error in of theta
+                        t_err += ex * (currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading)) -
+                                ey * (currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading));
 
-                        derr += Math.Abs(ex) +Math.Abs( ey);
-                        errsqrd += Math.Pow(ex, 2) + Math.Pow(ey, 2);  // Formula 3
-                        x_err += ex;
-                        y_err += ey;
-                        t_err += ex * (currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading)) - ey * (currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading));
+                        //Updating the Hessian Matrix
+                        H[0, 0] += 1;  // (equation 9 in ION GNSS Paper)
+                        H[0, 1] += 0;  // (equation 10 in ION GNSS Paper)
+                        H[0, 2] += (currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading));  // (equation 11 in ION GNSS Paper)
+                        H[1, 0] += 0;  // (equation 12 in ION GNSS Paper)
+                        H[1, 1] += 1;  // (equation 13 in ION GNSS Paper)
+                        H[1, 2] += -(currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading));  // (equation 14 in ION GNSS Paper)
+                        H[2, 0] += (currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading));  // (equation 15 in ION GNSS Paper)
+                        H[2, 1] += -(currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading));  // (equation 16 in ION GNSS Paper)
+                        H[2, 2] += Math.Pow(currentLandmark.Distance, 2);  // Formula 17
+                    }//end for each CLM
+                }//end update h
 
-                        H[0, 0] += 1;  // Formula 9.2, Formula 21
-                        H[0, 1] += 0;  // Formula 10.2, Formula 21
-                        H[0, 2] += (currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading));  // Formula 11.2, Formula 22
-                        H[1, 0] += 0;  // Formula 12.2, Formula 21
-                        H[1, 1] += 1;  // Formula 13.2,, Formula 21
-                        H[1, 2] += -(currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading));  // Formula 14.2, Formula 23
-                        H[2, 0] += (currentLandmark.Distance * Math.Cos(thisRobotLocation.Heading + currentLandmark.Heading));  // Formula 15.2, Formula 22
-                        H[2, 1] += -(currentLandmark.Distance * Math.Sin(thisRobotLocation.Heading + currentLandmark.Heading));  // Formula 16.2, Formula 23
-                        H[2, 2] += Math.Pow(currentLandmark.Distance, 2);  // Formula 17.2, Formula 24
-                    }
-                }
-
+                // calculating the Matrix H * lamba(Diagonal Matrix). (necassary for equation 19 in ION GNSS Paper) 
                 for (int i = 0; i < 3; i++)
                 {
                     for (int k = 0; k < 3; k++)
@@ -135,12 +141,13 @@ namespace Yeti2015.RobotService
                     }
                 }
 
+                //finding the determinant , which is used to calculate the inverse of the Matrix H * lamba(Diagonal Matrix)
                 det = H_lm[0, 0] * (H_lm[2, 2] * H_lm[1, 1] - H_lm[2, 1] * H_lm[1, 2]) -
                     H_lm[1, 0] * (H_lm[2, 2] * H_lm[0, 1] - H_lm[2, 1] * H_lm[0, 2]) +
                     H_lm[2, 0] * (H_lm[1, 2] * H_lm[0, 1] - H_lm[1, 1] * H_lm[0, 2]);
 
 
-                // Find inverse of H_lm
+                // Find inverse of Matrix H * lamba(Diagonal Matrix). (Part of equation 19 in ION GNSS Paper)
                 H_inv[0, 0] = (H_lm[2, 2] * H_lm[1, 1] - H_lm[2, 1] * H_lm[1, 2]) / det;
                 H_inv[0, 1] = -(H_lm[2, 2] * H_lm[0, 1] - H_lm[2, 1] * H_lm[0, 2]) / det;
                 H_inv[0, 2] = (H_lm[1, 2] * H_lm[0, 1] - H_lm[1, 1] * H_lm[0, 2]) / det;
@@ -153,86 +160,42 @@ namespace Yeti2015.RobotService
 
 
                 /* Update Here*/
-                /* Hessian Inverse times Gradiant*/
-                dx = (H_inv[0, 0] * x_err) + (H_inv[0, 1] * y_err) + (H_inv[0, 2] * t_err);  // Formula 25 (After plus)
-                dy = (H_inv[1, 0] * x_err) + (H_inv[1, 1] * y_err) + (H_inv[1, 2] * t_err);  // Formula 25 (After plus)
-                dt = (H_inv[2, 0] * x_err) + (H_inv[2, 1] * y_err) + (H_inv[2, 2] * t_err);  // Formula 25 (After plus)
+                /* Hessian Inverse times Gradiant! (equation 19 in ION GNSS Paper)*/
+                // this is the change in the robot location from the intial guess used.
+                dx = (H_inv[0, 0] * x_err) + (H_inv[0, 1] * y_err) + (H_inv[0, 2] * t_err);  // (equation 19 in ION GNSS Paper)
+                dy = (H_inv[1, 0] * x_err) + (H_inv[1, 1] * y_err) + (H_inv[1, 2] * t_err);  // (equation 19 in ION GNSS Paper)
+                dt = (H_inv[2, 0] * x_err) + (H_inv[2, 1] * y_err) + (H_inv[2, 2] * t_err);  // (equation 19 in ION GNSS Paper)
 
-
+                // if the error(not squared) is less than tolerance, meaning the position guess is almost exactly correct, so there is no need to converge further.
                 if (Math.Abs(derr) < tolerance)
                 {
                     j = JMAX;  // break;
                 }
 
+                //compared this robot location guess sum of error squared to the last
                 if (errsqrd < lasterrsqrd)
                 {
-                    updateh = true;
-                    lambda /= 10;
-                    lasterrsqrd = errsqrd;
-                    thisRobotLocation.X += dx;  // Formula 25
-                    thisRobotLocation.Y += dy;  // Formula 25
-                    thisRobotLocation.Heading += dt;  // Formula 25
+                    //if this position has better error than the last
+                    updateh = true;// if it does, then recalculate the hessian matrix for a new position.
+                    lambda /= 10;// divide lambda by 10, and slow the learning rate to converge on a local minimum slower.
+                    lasterrsqrd = errsqrd;// save the error squared so it can be compared to next iteration.
+                    thisRobotLocation.X += dx;  // (equation 19 in ION GNSS Paper)
+                    thisRobotLocation.Y += dy;  // (equation 19 in ION GNSS Paper)
+                    thisRobotLocation.Heading += dt;  // (equation 19 in ION GNSS Paper)
                 }
-                else
+                else// this position has more error than the last
                 {
-                    updateh = false;
-                    lambda *= 10;
+                    updateh = false;//do not calculate new hessian matrix
+                    lambda *= 10;//just increase lambda
                 }
-
-                //Console.WriteLine("x=%f\ty=%f\tt=%f\td=%02f\r", thisRobotLocation.X, thisRobotLocation.Y, thisRobotLocation.Heading, derr);
-            }
+            }//end Convergence attempts. (J=MAX or Derivative of Error is 0).
 
             previousRobotLocation.X = thisRobotLocation.X;
             previousRobotLocation.Y = thisRobotLocation.Y;
             previousRobotLocation.Heading = thisRobotLocation.Heading; 
 
-            return thisRobotLocation; // Skip the rest of stuff
-       
-            LocationPoint newRobotLocation = new LocationPoint(robotLocation.X, robotLocation.Y, robotLocation.Heading);
-            if (Math.Abs(Lspeed) > minSpeed && Math.Abs(Rspeed) > minSpeed)
-            {
-                double deltaX = thisRobotLocation.X - previousRobotLocation.X;
-                double deltaY = thisRobotLocation.Y - previousRobotLocation.Y;
-                double deltaHeading = thisRobotLocation.Heading - previousRobotLocation.Heading;
-                if (Math.Abs(thisRobotLocation.X - previousRobotLocation.X) < maxx && Math.Abs(thisRobotLocation.Y - previousRobotLocation.Y) < maxy && Math.Abs(thisRobotLocation.Heading - previousRobotLocation.Heading) < maxt)
-                {
-                    if (Math.Abs(deltaX) > minx)
-                    {
-                ////        ////*rx = previousRobotLocation.X = thisRobotLocation.X; 
-                        previousRobotLocation.X = thisRobotLocation.X; 
-                        newRobotLocation.X = thisRobotLocation.X;
-                    }
-
-
-                    if (Math.Abs(deltaY) > miny)
-                    {
-
-                        ////        ////*ry = previousRobotLocation.Y = thisRobotLocation.Y;
-                        previousRobotLocation.Y = thisRobotLocation.Y;
-                        newRobotLocation.Y = thisRobotLocation.Y;
-                    }
-
-
-                    if (Math.Abs(deltaHeading) > mint)
-                    {
-                ////        ////*rt = previousRobotLocation.Heading = ADJUST_RADIANS(thisRobotLocation.Heading);
-
-                        double adjustedTT = ((thisRobotLocation.Heading + Math.PI) % (2 * Math.PI)) - Math.PI; // Adjusting to fit between -pi and pi.
-                        newRobotLocation.Heading = adjustedTT;
-                        previousRobotLocation.Heading = adjustedTT;
-
-                    }
-
-                    return newRobotLocation;
-                }
-
-            }
-
-
-
-
-            return robotLocation; 
-        }
+            return thisRobotLocation; 
+        }//end determine robot location
 
         //Scan landmarks is used to find all of the surrounding landmark locations. To do this the LiDAR data is needed, the list of known landmark locations
         //from a text file are needed, and the robots current location (to convert each point in the LiDAR data to an XY coordinate in the field).
