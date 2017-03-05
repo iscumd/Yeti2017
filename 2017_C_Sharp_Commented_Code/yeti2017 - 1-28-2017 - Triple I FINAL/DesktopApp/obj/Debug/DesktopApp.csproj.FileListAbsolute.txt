@@ -202,3 +202,6 @@ C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti Information Sessions\yeti20
 C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti Information Sessions\yeti2017 - Commented Code\yeti2017 - 1-28-2017 - Triple I FINAL\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe.config
 C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti Information Sessions\yeti2017 - Commented Code\yeti2017 - 1-28-2017 - Triple I FINAL\DesktopApp\obj\Debug\Yeti2015.DesktopApp.exe
 C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti Information Sessions\yeti2017 - Commented Code\yeti2017 - 1-28-2017 - Triple I FINAL\DesktopApp\obj\Debug\Yeti2015.DesktopApp.pdb
+C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti2017\2017_C_Sharp_Commented_Code\yeti2017 - 1-28-2017 - Triple I FINAL\DesktopApp\bin\Debug\Yeti2015.DesktopApp.exe.config
+C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti2017\2017_C_Sharp_Commented_Code\yeti2017 - 1-28-2017 - Triple I FINAL\DesktopApp\obj\Debug\Yeti2015.DesktopApp.exe
+C:\Users\mbowyer\Google Drive\03 ISC Stuff\Yeti\Yeti2017\2017_C_Sharp_Commented_Code\yeti2017 - 1-28-2017 - Triple I FINAL\DesktopApp\obj\Debug\Yeti2015.DesktopApp.pdb

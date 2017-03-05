@@ -52,7 +52,6 @@ namespace Yeti2015.RobotService
         const double NoMovementTolerance = 0.1;// 10 cm
         const double NoRotationTolerance = 5.0; //5 degrees
         private static DateTime lastStuckTime; //save last stuck time
-
      //private static TimeSpan reverseDuration = new TimeSpan(0, 0, 0, 0, 500); // 0.5 Seconds
         private static TimeSpan reverseDuration = new TimeSpan(0, 0, 0, 0, 800); // 0.5 Seconds
         private static float reverseSpeed = -0.5f;
@@ -172,7 +171,9 @@ namespace Yeti2015.RobotService
             if (EnableGUICalls) { NewLandmarkData.Invoke(currentLandmarks, EventArgs.Empty); }//print the Landmark locations to the GUI
 
         //OBSTACLE AVOIDANCE
-            Buffer.combinedUpdatePoints(lidarData.ToLidarPoints(19000));//Creates List of LiDAR points which have a positive Y value, and are within the Buffer distance threshold
+            Buffer.combinedUpdatePoints(lidarData.ToLidarPoints(19000));
+            //Creates List of LiDAR points which have a positive Y value, and are within the Buffer distance threshold
+            
             //look at angle needed to go to target waypoint, if there is an obstacle in the way, then find what turn angle is needed to avoid it to the right. 
             double Right = Buffer.combinedRightWheelScan(TargetLocation.location.ToLidarPoint(YetiLocation));
             //look at angle needed to go to target waypoint, if there is an obstacle in the way, then find what turn angle is needed to avoid it to the left. 
