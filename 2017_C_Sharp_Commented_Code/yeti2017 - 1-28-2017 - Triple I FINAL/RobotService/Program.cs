@@ -66,9 +66,6 @@ namespace Yeti2015.RobotService
     // For debugging
         private static bool keepCorrecting = false;
         static float debug1;
-    
-    //INITialize vairables to hold the previous states of multiple variables so that they can be compared to current state.
-        static double oldYetiLocation_X, oldYetiLocation_Y, oldYetiLocation_Heading, oldLeft, oldRight, oldTurn, oldlSpeed, oldrSpeed, oldcurrentLandmarks_Count;
 
         public static void Main(string[] args)
         {        
@@ -86,7 +83,7 @@ namespace Yeti2015.RobotService
             knownLandmarks = Localization.KnownLandmarksInit(@"..\..\landmarksDay2.txt");
 
         //Specify which XY Location the robot will start in the field at
-            YetiLocation = new LocationPoint(0.5, -1, 0);
+            //YetiLocation = new LocationPoint(0.5, -1, 0);
            // YetiLocation = new LocationPoint(0.25, -1, 0);
             //YetiLocation = new LocationPoint(0.0, -1, 0);
             YetiLocation = new LocationPoint(0.0, 0, 0);
@@ -95,8 +92,8 @@ namespace Yeti2015.RobotService
             //TargetLocationList = Target.ReadLocationData(@"..\..\navigationQualification.txt");
             //TargetLocationList = Target.ReadLocationData(@"..\..\navigationDay1.txt");
             TargetLocationList = Target.ReadLocationData(@"..\..\navigationTripleIFinal.txt"); 
-            TargetLocation = TargetLocationList[0];
-            PrevTargetLocation = new Target();
+            TargetLocation = TargetLocationList[0];//set first target as first from txt file
+            PrevTargetLocation = new Target();//initialize previous target to null
 
         //Initialize the Yeti Location history for Stall detection
             YetiHistory = new Queue<LocationPoint>(YetiHistorySize); //stall detection
@@ -185,14 +182,14 @@ namespace Yeti2015.RobotService
 
             //Navigate!
             if (Control.areWeThereYetAndTurnPID(YetiLocation, TargetLocation))//has Yeti arrived at the target waypoint?
-            {
+            {//true when target is reached.
                 //reached target, change target to next waypoint from waypoint navigation list
-                Control.initGuide();//reset PD controller
+                Control.initGuide();//reset PD controller errors to 0
                 PrevTargetLocation = TargetLocation;//update previous target the the just reached target
 
                 //assign new target from the next waypoint in the list of waypoints
                 var newTargetLocation = TargetLocationList.SingleOrDefault(x => x.location.id == PrevTargetLocation.location.id + 1);
-                if (newTargetLocation != null) //if it is null, we've hit the last target
+                if (newTargetLocation != null) //if it is null, we've hit the last target so don't update the target
                 {
                     TargetLocation = newTargetLocation;//otherwise go towards new target
                 }
@@ -219,7 +216,7 @@ namespace Yeti2015.RobotService
                 //speed slower as turn steeper 
                 speed = 1 / (1 + 1 * Math.Abs(turn)) * (double)dir;
                 speed = (double)dir * Math.Min(Math.Abs(speed), 1.0);
-                lSpeed = (float)((speed + turnBoost * turn) * maxSpeed * Control.cvar.speed);
+                lSpeed = (float)((speed + turnBoost * turn) * maxSpeed * Control.cvar.speed);//controlvarspeed is read in from text file, and limits speed by a percentage
                 rSpeed = (float)((speed - turnBoost * turn) * maxSpeed * Control.cvar.speed); 
             }
             else if (Right == Buffer.DOOM && Left == Buffer.DOOM )//There is no way to avoid anything to the left or the right, so back up.

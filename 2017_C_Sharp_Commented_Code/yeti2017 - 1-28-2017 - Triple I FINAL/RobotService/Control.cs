@@ -8,14 +8,13 @@ namespace Yeti2015.RobotService
 {
     static class Control
     {
-        static double lastTime, thisTime;
-        static double maxIntErr = 0.5;
-       public static CVAR cvar = new CVAR();
-       const double TICKS_PER_SECOND = 10000000;
-        static bool approachingTarget;//, inLastTarget;
-        static double destinationThresh = 0.5, approachingThresh, leaveTargetThresh;
+        static double lastTime, thisTime;//need to save the previous time navigation was called and the current time.
+        static double maxIntErr = 0.5; // this is the maximum allowed Integral error
+        public static CVAR cvar = new CVAR();//Create control object which holds all PID controller definitions
+        const double TICKS_PER_SECOND = 10000000;// needed to calculate time
+        static double destinationThresh = 0.5; // radius threshold around waypoint to consider robot has "hit" the waypoint.
 
-
+        //correctangle into range of (pi,-pi) or (180, -180)
        static double adjust_angle(double angle, double circle)
         {                               //circle = 2pi for radians, 360 for degrees
             // Subtract multiples of circle
@@ -25,95 +24,83 @@ namespace Yeti2015.RobotService
             return angle;
         }
 
-
+        //resets PID errors to 0, and resets the clock so that errors accumulate from this point on.
+        //called at the begining of the waypoint navigation and after a waypoint it hit.
         public static void initGuide()
         {
             lastTime = System.DateTime.Now.Ticks / (TICKS_PER_SECOND);
             cvar.pErr = cvar.iErr = cvar.dErr = 0;
         }
 
-
-        /// <summary>
-        /// the function previously known as guide
-        /// </summary>
-        /// <param name="robot"></param>
-        /// <param name="currentTarget"></param>
-        /// <returns></returns>
+        /// the function previously known as guide, returns true when the robot has reached it's waypoint.
         public static bool areWeThereYetAndTurnPID(LocationPoint robot, Target currentTarget)
         {
-
-            double heading = robot.Heading;
-            int dir = (int)currentTarget.dir; //forward or backward
-            double dx, dy, s, c, /*nx, ny,*/ dt;//, temp;
-            //double dlastx, dlasty, lastDist;
-            double desiredAngle;
-
-            bool reachedTarget;
+            double heading = robot.Heading; // save the robots heading in the field locally
+            int dir = (int)currentTarget.dir; //obtain if the robot should go forward or backward (based on read in text file)
+            double dx, dy; //Delta X & Delta Y. Difference in X & Y coordinates the robot is from the target
+            //double s, c;//Sin and cosine of the robots heading
+            double dt;//Delta time. Holds the difference in time from the last time this function was called to this time. 
+            double desiredAngle;// the desired heading. The heading which would cause the robot to directly face the target
+            bool reachedTarget;//flag to detect if the robot has made it to its waypoint
 
             if (dir < 0) //if direction from text file says to go backward, turn heading around
             {
                 heading = heading - Math.PI * Math.Sign(heading);
             }
 
-            //how far we are from the current location
-            dx = currentTarget.location.X - robot.X;
-            dy = currentTarget.location.Y - robot.Y;
+            //FIND DISTANCE IN X & Y COORDINATES TO TARGET
+            dx = currentTarget.location.X - robot.X;//find difference in X coordinate from robot locaiton to target location
+            dy = currentTarget.location.Y - robot.Y;//find difference in X coordinate from robot locaiton to target location
 
-            //dlastx = lastTarget.X - robot.X;
-            //dlasty = lastTarget.Y - robot.Y;
-            //lastDist = Math.Sqrt(dlastx * dlastx + dlasty * dlasty);
+            //FIND DISTANCE AND ANGLE TO DESTINATION
+            cvar.targdist = Math.Sqrt(dx * dx + dy * dy);//current distance from the robot to the target
+            // desired angle is the desired Heading the robot should have at this instance if it were to be facing the target.
+            desiredAngle = adjust_angle(Math.Atan2(dx, dy), 2.0*Math.PI);
+            //DEBUG(heading); DEBUG(desiredAngle);
 
-            c = Math.Cos(heading);
-            s = Math.Sin(heading);
 
-            cvar.targdist = Math.Sqrt(dx * dx + dy * dy);
+            //USED FOR WAYPOINT NAVIGATION
             //cvar.right = dx * c - dy * s;
             //cvar.front = dy * c + dx * s;
-            desiredAngle = adjust_angle(Math.Atan2(dx, dy), 2.0*Math.PI);
+            //c = Math.Cos(heading);//find Cosine term of the robots heading
+            //s = Math.Sin(heading);//find sine term of the robots heading
 
-            cvar.speed = currentTarget.speed;
-
-            //    DEBUG(heading); DEBUG(desiredAngle); DEBUGN(nextAngle);
-
-            /*PID Calculations cvar3 Heading*/
-
-            //nx = -(currentTarget.Y - lastTarget.Y); // -Delta Y
-            //ny = (currentTarget.X - lastTarget.X); //  Delta X
-            //temp = Math.Sqrt(nx * nx + ny * ny) + 1e-3; // To avoid division by zero
-            //nx /= temp;
-            //ny /= temp;
-
-            thisTime = System.DateTime.Now.Ticks / (TICKS_PER_SECOND);
-            dt = thisTime - lastTime;
+            //RETRIEVE HOW FAST THE ROBOT SHOULD BE MOVING TOWARDS THIS WAYPOINT
+            cvar.speed = currentTarget.speed;//retrive the speed for this waypoint from navigation text file
+            
+            //TIMING UPDATES FOR PID
+            thisTime = System.DateTime.Now.Ticks / (TICKS_PER_SECOND);//find and save the current time
+            dt = thisTime - lastTime;//save the difference from the last time to the current time. 
 
             /*Current Target Heading PID Calculations*/
-            cvar.lastpErr = cvar.pErr;
-            cvar.pErr = adjust_angle(heading - desiredAngle, 2.0 * Math.PI);
-            cvar.iErr = cvar.iErr + cvar.pErr * dt;
-            cvar.iErr = Math.Sign(cvar.iErr) * Math.Min(Math.Abs(cvar.iErr), maxIntErr);
-            if (dt != 0)
+            cvar.lastpErr = cvar.pErr;//save the last proportional error
+            cvar.pErr = adjust_angle(heading - desiredAngle, 2.0 * Math.PI);//calculate the current propotional error betweem our current heading and the target heading
+            cvar.iErr = cvar.iErr + cvar.pErr * dt;// increase the cumulated error.
+            cvar.iErr = Math.Sign(cvar.iErr) * Math.Min(Math.Abs(cvar.iErr), maxIntErr);//limit the maxmium integral error
+
+            if (dt != 0)//if the time has changed since the last iteration of guide. (cannot divide by 0).
             {
-                cvar.dErr = (cvar.pErr - cvar.lastpErr) / dt;
+                cvar.dErr = (cvar.pErr - cvar.lastpErr) / dt;// calculate the derrivative error
             }
-            if (Math.Cos(cvar.pErr) > 0.5) // +-60 degrees
+            if (Math.Cos(cvar.pErr) > 0.5) // if the robot is not facing more than +-60 degrees away from the target
             {
                 //cvar.kP = 3 / Math.Max(cvar.targdist, 3); //  * 0.7112
                 ////cvar.kP = 1;
                 cvar.kP = 0.5;
-                cvar.turn = -(cvar.kP * Math.Sin(cvar.pErr) *2 + cvar.kI * cvar.iErr + cvar.kD * cvar.dErr);  // Nattu
+                cvar.turn = -(cvar.kP * Math.Sin(cvar.pErr) *2 + cvar.kI * cvar.iErr + cvar.kD * cvar.dErr);  // calulate how much the robot should turn at this instant.Nattu
                 ////cvar.turn = -(cvar.kP * cvar.pErr + cvar.kI * cvar.iErr + cvar.kD * cvar.dErr);
             }
-            else
+            else//if the robot is facing more than 60 degrees away from the target
             {
-                cvar.turn = -0.5 * Math.Sign(cvar.pErr); //if you need to turnin place, then ignore PID
+                cvar.turn = -0.5 * Math.Sign(cvar.pErr); //if you need to turnin place, then ignore PID temporarily
             }
-            lastTime = thisTime;
+            lastTime = thisTime;//update the times
 
             //inLastTarget = (lastDist < leaveTargetThresh);
             //approachingTarget = (cvar.targdist < approachingThresh);
-            reachedTarget = (cvar.targdist < destinationThresh);
+            reachedTarget = (cvar.targdist < destinationThresh);//if the robot is very close to the target, then it has hit the target.
 
-            return reachedTarget;
+            return reachedTarget;//return true if the robot is close to the target.
         }
 
 
